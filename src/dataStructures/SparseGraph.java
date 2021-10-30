@@ -20,7 +20,7 @@ public class SparseGraph implements Graph {
     }
 
     public void addNode(GraphNode node) {
-        node.setKey(++this.nodeCount);
+        node.setKey(this.nodeCount++);
 
         this.nodes.add(node);
         this.edges.add(new ArrayList<Integer>());
@@ -29,6 +29,7 @@ public class SparseGraph implements Graph {
     public void addEdge(GraphNode i, GraphNode j) {
         edges.get(i.getKey()).add(j.getColor());
         edges.get(j.getKey()).add(i.getKey());
+        this.edgeCount++;
     }
 
     @Override
@@ -48,12 +49,12 @@ public class SparseGraph implements Graph {
 
     @Override
     public int nodeCount() {
-        return 0;
+        return nodeCount;
     }
 
     @Override
     public int edgeCount() {
-        return 0;
+        return this.edgeCount;
     }
 
     @Override
