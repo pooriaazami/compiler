@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class DFA implements Graph {
 
     private ArrayList<BinaryNode> nodes;
-    private ArrayList<ArrayList<Pair<BinaryNode, String>>> edges;
+    private ArrayList<ArrayList<Pair<BinaryNode, Character>>> edges;
 
     private int nodeCount;
 
@@ -22,24 +22,32 @@ public class DFA implements Graph {
 
     public int addNewState(boolean isFinalState) {
         this.nodes.add(new BinaryNode(isFinalState, nodeCount));
+        this.edges.add(new ArrayList<>());
 
         return nodeCount++;
     }
 
-    public void addNewEdge(int from, int to, String value) {
-        this.edges.get(from).add(new Pair<BinaryNode, String>(nodes.get(to), value));
+    public void addNewEdge(int from, int to, char value) {
+        this.edges.get(from).add(new Pair<BinaryNode, Character>(nodes.get(to), value));
     }
 
     public boolean processInput(String input) {
         int state = 0;
+        boolean check;
 
         for (char c : input.toCharArray()) {
-            for (Pair<BinaryNode, String> node : this.edges.get(state)) {
-                if (node.getSecond().equals(c)) {
+            check = false;
+
+            for (Pair<BinaryNode, Character> node : this.edges.get(state)) {
+                if (node.getSecond() == c) {
                     state = node.getFirst().getKey();
+                    check = true;
                     break;
                 }
             }
+
+            if (!check)
+                throw new IllegalArgumentException();
         }
 
         return this.nodes.get(state).getData();
@@ -54,7 +62,7 @@ public class DFA implements Graph {
     public ArrayList<GraphNode> getNeighbors(GraphNode node) {
         ArrayList<GraphNode> nodes = new ArrayList<>();
 
-        for (Pair<BinaryNode, String> pair : this.edges.get(node.getKey())) {
+        for (Pair<BinaryNode, Character> pair : this.edges.get(node.getKey())) {
             nodes.add(pair.getFirst());
         }
 
@@ -94,7 +102,7 @@ public class DFA implements Graph {
 
     @Override
     public boolean isAdjacent(GraphNode i, GraphNode j) {
-        for (Pair<BinaryNode, String> pair : this.edges.get(i.getKey()))
+        for (Pair<BinaryNode, Character> pair : this.edges.get(i.getKey()))
             if (pair.getFirst().getKey() == j.getKey())
                 return true;
 
