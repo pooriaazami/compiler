@@ -1,5 +1,7 @@
 package dataStructures;
 
+import dataStructures.Nodes.GraphNode;
+
 import java.util.ArrayList;
 
 public class SparseGraph implements Graph {

@@ -1,4 +1,4 @@
-package dataStructures;
+package dataStructures.Nodes;
 
 abstract public class GraphNode<T> {
     protected T data;

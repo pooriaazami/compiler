@@ -1,4 +1,4 @@
-package dataStructures;
+package dataStructures.Nodes;
 
 public class StringNode extends GraphNode<String> {
     public StringNode(String data, int key) {

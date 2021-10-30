@@ -1,9 +1,7 @@
 package dataStructures.Tests;
 
-import dataStructures.StringNode;
+import dataStructures.Nodes.StringNode;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class StringNodeTest {
 

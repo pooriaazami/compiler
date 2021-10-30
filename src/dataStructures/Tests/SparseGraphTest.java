@@ -1,8 +1,8 @@
 package dataStructures.Tests;
 
-import dataStructures.GraphNode;
+import dataStructures.Nodes.GraphNode;
 import dataStructures.SparseGraph;
-import dataStructures.StringNode;
+import dataStructures.Nodes.StringNode;
 import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.*;
