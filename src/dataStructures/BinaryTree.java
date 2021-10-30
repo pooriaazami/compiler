@@ -37,6 +37,8 @@ public class BinaryTree implements Graph {
     }
 
     public void setChild(BinaryTreeNode parent, BinaryTreeNode node, CHILD child) {
+        node.setKey(this.nodeCount++);
+
         switch (child) {
             case LEFT -> parent.setLeft(node);
             case RIGHT -> parent.setRight(node);

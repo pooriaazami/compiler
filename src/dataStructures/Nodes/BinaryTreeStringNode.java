@@ -6,6 +6,10 @@ public class BinaryTreeStringNode extends BinaryTreeNode<String> {
         super(data, key);
     }
 
+    public BinaryTreeStringNode(String data) {
+        super(data, -1);
+    }
+
     public BinaryTreeStringNode(String data, int weight, int color, int key) {
         super(data, weight, color, key);
     }
