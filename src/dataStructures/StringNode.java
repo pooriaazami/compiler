@@ -5,6 +5,10 @@ public class StringNode extends GraphNode<String> {
         super(data, key);
     }
 
+    public StringNode(String data) {
+        super(data, -1);
+    }
+
     @Override
     public String getData() {
         return this.data;
@@ -13,5 +17,10 @@ public class StringNode extends GraphNode<String> {
     @Override
     public void setData(String newData) {
         this.data = newData;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("StringNode{data = '%s'}", this.data);
     }
 }

@@ -25,4 +25,32 @@ abstract public class GraphNode<T> {
 
     public abstract void setData(T newData);
 
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public int getKey() {
+        return key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.key;
+    }
 }
