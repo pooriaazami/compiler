@@ -1,7 +1,6 @@
 package dataStructures;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class SparseGraph implements Graph {
 
@@ -23,13 +22,15 @@ public class SparseGraph implements Graph {
         node.setKey(this.nodeCount++);
 
         this.nodes.add(node);
-        this.edges.add(new ArrayList<Integer>());
+        this.edges.add(new ArrayList<>());
     }
 
     public void addEdge(GraphNode i, GraphNode j) {
-        edges.get(i.getKey()).add(j.getColor());
-        edges.get(j.getKey()).add(i.getKey());
-        this.edgeCount++;
+        if (!isAdjacent(i, j)) {
+            edges.get(i.getKey()).add(j.getKey());
+            edges.get(j.getKey()).add(i.getKey());
+            this.edgeCount++;
+        }
     }
 
     @Override
@@ -48,6 +49,11 @@ public class SparseGraph implements Graph {
     }
 
     @Override
+    public ArrayList<GraphNode> getNodes() {
+        return this.nodes;
+    }
+
+    @Override
     public int nodeCount() {
         return nodeCount;
     }
@@ -59,11 +65,20 @@ public class SparseGraph implements Graph {
 
     @Override
     public boolean isLeaf(GraphNode node) {
-        return false;
+        return degree(node) == 1;
     }
 
     @Override
     public boolean isIsolate(GraphNode node) {
+        return degree(node) == 0;
+    }
+
+    @Override
+    public boolean isAdjacent(GraphNode i, GraphNode j) {
+        for (int hash : this.edges.get(i.hashCode()))
+            if (hash == j.hashCode())
+                return true;
+
         return false;
     }
 }

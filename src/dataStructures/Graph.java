@@ -8,6 +8,8 @@ public interface Graph {
 
     public ArrayList<GraphNode> getNeighbors(GraphNode node);
 
+    public ArrayList<GraphNode> getNodes();
+
     public int nodeCount();
 
     public int edgeCount();
@@ -15,5 +17,7 @@ public interface Graph {
     public boolean isLeaf(GraphNode node);
 
     public boolean isIsolate(GraphNode node);
+
+    public boolean isAdjacent(GraphNode i, GraphNode j);
 
 }
