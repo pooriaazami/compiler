@@ -97,8 +97,14 @@ public class BinaryTree implements Graph {
 
     @Override
     public boolean isAdjacent(GraphNode i, GraphNode j) {
+        BinaryTreeNode INode = convertNode(i);
+        BinaryTreeNode JNode = convertNode(j);
 
-        return false;
+
+        return INode.getLeft().getKey() == JNode.getKey() ||
+                INode.getRight().getKey() == JNode.getKey() ||
+                JNode.getRight().getKey() == INode.getKey() ||
+                JNode.getLeft().getKey() == INode.getKey();
     }
 
     private void printTree(BinaryTreeNode root, int tab) {
