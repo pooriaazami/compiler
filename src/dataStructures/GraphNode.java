@@ -1,7 +1,7 @@
 package dataStructures;
 
 abstract public class GraphNode<T> {
-    private T data;
+    protected T data;
 
     private int color;
     private int weight;
